@@ -1,0 +1,20 @@
+<div class="registration-box">
+  <%= form_for @registration_form, url: register_path do |form| %>
+    <%= form.label "Your full name" %>
+    <%= form.text_field :user_name, class: "u-full-width", placeholder: "Sam Josephson" %>
+    <%= error_message_tag(@registration_form.errors[:user_name]) %>
+
+    <%= form.label "Company or organization" %>
+    <%= form.text_field :organization_name, class: "u-full-width", placeholder: "Example, Inc." %>
+    <%= error_message_tag(@registration_form.errors[:organization_name]) %>
+
+    <%= form.label "Email" %>
+    <%= form.text_field :user_email, class: "u-full-width", placeholder: "sam@example.com" %>
+    <%= error_message_tag(@registration_form.errors[:user_email]) %>
+
+    <%= form.label "Password" %>
+    <%= form.password_field :user_password, class: "u-full-width", placeholder: "Easy to remember, hard to guess" %>
+
+    <%= form.submit 'Start your free trial', class: "button-primary u-full-width" %>
+  <% end %>
+</div>
