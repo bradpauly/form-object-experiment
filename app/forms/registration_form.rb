@@ -1,5 +1,4 @@
-class RegistrationForm
-  include ActiveForm::Form
+class RegistrationForm < ActiveForm::Form
 
   accepts_attributes_for :user, :name, :email, :password
   accepts_attributes_for :organization, :name

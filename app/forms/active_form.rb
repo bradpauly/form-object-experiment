@@ -1,15 +1,6 @@
 module ActiveForm
-  module Form
-    def self.included(base)
-      base.class_eval do
-        include ActiveModel::Model
-      end
-      base.extend(ActiveForm::Form::ClassMethods)
-    end
-
-    def models
-      @models ||= []
-    end
+  class Form
+    include ActiveModel::Model
 
     def save
       if process
@@ -42,6 +33,12 @@ module ActiveForm
       attributes
     end
 
+  private
+
+    def models
+      @models ||= []
+    end
+
     def validate_models
       models.each do |thing|
         name = thing.class.name.downcase
@@ -55,45 +52,43 @@ module ActiveForm
       end
     end
 
-    module ClassMethods
-      def model_names
-        @model_names ||= []
-      end
 
-      def attribute_map
-        @attribute_map ||= {}
-      end
-
-      def map_model_attribute(model_name, attribute_name)
-        attribute_map[model_name] ||= []
-        attribute_map[model_name] << attribute_name
-      end
-
-      def within_save_method
-        @within_save_method
-      end
-
-      def within_save(method_name)
-        @within_save_method = method_name
-      end
-
-      def after_save_method
-        @after_save_method
-      end
-
-      def after_save(method_name)
-        @after_save_method = method_name
-      end
-
-      def accepts_attributes_for(model_name, *attributes)
-        model_names << model_name
-        attr_accessor model_name
-        attributes.each do |attribute_name|
-          map_model_attribute(model_name, attribute_name)
-          attr_accessor "#{model_name}_#{attribute_name}".to_sym
-        end
-      end
+    def self.model_names
+      @model_names ||= []
     end
 
+    def self.attribute_map
+      @attribute_map ||= {}
+    end
+
+    def self.map_model_attribute(model_name, attribute_name)
+      attribute_map[model_name] ||= []
+      attribute_map[model_name] << attribute_name
+    end
+
+    def self.within_save_method
+      @within_save_method
+    end
+
+    def self.within_save(method_name)
+      @within_save_method = method_name
+    end
+
+    def self.after_save_method
+      @after_save_method
+    end
+
+    def self.after_save(method_name)
+      @after_save_method = method_name
+    end
+
+    def self.accepts_attributes_for(model_name, *attributes)
+      model_names << model_name
+      attr_accessor model_name
+      attributes.each do |attribute_name|
+        map_model_attribute(model_name, attribute_name)
+        attr_accessor "#{model_name}_#{attribute_name}".to_sym
+      end
+    end
   end
 end
