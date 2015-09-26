@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_one :organization
 
-  # attr_accessor :password
   has_secure_password
 
   validates :name, presence: { message: "Please enter your name" }

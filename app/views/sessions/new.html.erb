@@ -1,0 +1,22 @@
+<div class="login-box">
+  <%= form_for @login_form, url: login_path do |form| %>
+    <%= form.label "Email" %>
+    <%= form.text_field :email, class: "u-full-width" %>
+
+    <%= form.label "Password" %>
+    <%= form.password_field :password, class: "u-full-width" %>
+
+    <%= form.label :remember_me do %>
+      <%= form.check_box :remember_me %>
+      <span class="label-body">Remember me for one month</span>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <%= form.submit 'Log in', class: "button-primary u-full-width" %>
+  <% end %>
+</div>

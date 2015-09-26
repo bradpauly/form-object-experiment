@@ -52,7 +52,6 @@ module ActiveForm
       end
     end
 
-
     def self.model_names
       @model_names ||= []
     end

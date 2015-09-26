@@ -21,7 +21,7 @@ div.container {
   margin-top:10rem;
 }
 
-div.registration-box {
+div.registration-box, div.login-box {
   max-width: 400px;
   margin:0 auto;
 }
@@ -35,4 +35,12 @@ div.validation-hint {
   color: #C34949;
   padding: 6px 0 0 0;
   margin-bottom: 1.0rem;
+}
+
+div.notice {
+	padding: 1.0rem 0;
+	margin-bottom: 1.0rem;
+	/*border: 1px solid #C34949;*/
+	color: #C34949;
+	
 }
