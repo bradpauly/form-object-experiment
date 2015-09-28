@@ -2,13 +2,21 @@
 <html>
 <head>
   <title>Registrar</title>
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="container">
+    <div class="header u-pull-right">
+      <% if current_user %>
+        <%= current_user.email %>
+        <%= link_to 'Log out', logout_path %>
+      <% else %>
+        <%= link_to 'Register', register_path %> or 
+        <%= link_to 'Log in', login_path %>
+      <% end %>
+    </div>
     <%= yield %>
   </div>
 </body>

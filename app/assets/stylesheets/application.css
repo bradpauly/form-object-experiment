@@ -18,10 +18,13 @@
  }
 
 div.container {
-  margin-top:10rem;
+  margin-top:1.0rem;
 }
-
+div.header {
+  margin-bottom:4rem;
+}
 div.registration-box, div.login-box {
+  padding-top:10rem;
   max-width: 400px;
   margin:0 auto;
 }
