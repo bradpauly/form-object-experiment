@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if user = @login_form.authenticate
       start_session(user)
-      redirect_to registrations_path
+      redirect_to bills_path
     else
       flash.now[:notice] = "Sorry, that email & password combination didn't work."
       render :new

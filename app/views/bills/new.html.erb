@@ -1,0 +1,22 @@
+<div class="registration-box">
+  <%= form_for @bill do |form| %>
+    <%= form.label "Bill name" %>
+    <%= form.text_field :name, class: "u-full-width", placeholder: "Rent, Cable, Health Insurance, etc." %>
+    <%= error_message_tag(@bill.errors[:name]) %>
+
+    <%= form.label "Day of the month it is due" %>
+    <%#= form.text_field :due_day, class: "u-full-width", placeholder: "sam@example.com" %>
+    <%#= error_message_tag(@bill.errors[:due_day]) %>
+
+    <table class="u-full-width">
+      <% 1.upto(4) do |w| %>
+        <tr>
+          <% 1.upto(7) do |d| %>
+            <td><%= link_to( ((7 * w) - (7 - d)), '#') %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+    <%= form.submit 'Add new bill', class: "button-primary u-full-width" %>
+  <% end %>
+</div>

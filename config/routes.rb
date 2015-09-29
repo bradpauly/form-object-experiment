@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   match '/login', to: 'sessions#new', via: [:get]
 
   get "/logout", to: "sessions#destroy", as: "logout"
+
+  resources :bills
 end
